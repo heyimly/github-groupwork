@@ -1,0 +1,247 @@
+/* Impots */
+@import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+
+/*Root Items */ 
+:root {
+  --col-bg: #ffffff;
+  --col-bg-fg: #222222;
+  --col-accent1:  #353442;
+  --col-accent1-fg: #000000;
+  --col-accent2:  plum;
+  --col-accent2-fg: #000000;
+  --col-accent3:  mediumslateblue;
+  --col-accent3-fg: #ffffff;
+  --col-action: firebrick;
+  --col-action-fg: #ffffff;
+  --col-error: tomato;
+  --col-error-fg: #000000;
+  --font-heading: 'Karla', san-serif;
+  --animations: 0.3s;
+  --convo-head: #c6c6c6; 
+}
+
+
+/*Document Defaults */ 
+
+body {
+  background-color: var(--col-bg);
+  color: var(--col-bg-fg);
+  font-family: var(--font-body);
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: 1.25;
+  margin: 0.25em 0;
+}
+
+h1 {
+  font-size: 1.25em;
+}
+
+
+.conversation-header {
+  font-size: 1.2em;
+  color: var(--convo-head);
+}
+.name {
+  background-color: white;
+  margin-top: 11px;
+  margin-bottom: 15px;
+  border: 3px solid black;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.name-head {
+  font-size: 1.3em;
+  margin-left: 12px ;
+  margin-top: -1.75em;
+  margin-left: 53px;
+}
+.convo {
+  font-family: karla,sans-serif;
+  font-style: 400;
+  font-size: 1.05em;
+  margin-left: 12px ;
+  position: relative;
+  left: 45px;
+  margin-bottom: 8px;
+}
+
+img {
+  width: 55px;
+  height:  50px;
+}
+
+.talk {
+  margin-left: 13px;
+}
+
+.convo  {
+  padding: 0;
+}
+
+.monica-talks {
+  font-family: karla,sans-serif;
+  background-color:#add8e6;
+  border: 3px solid black;
+  
+}
+
+.monica-message {
+  padding: 1em;
+  width: 50%;
+  border-color: black 4px;
+  padding: 1em;
+}
+
+.monica-profile {
+
+}
+
+.stranger {
+  font-family: karla,sans-serif;
+  background-color: grey;
+  border: 3px solid black;
+  width: 90%;
+}
+
+.stranger-message {
+  padding: 1em;
+}
+
+footer  {
+  background-color: white;
+  border: 2px solid black;
+  font-family: karla,sans-serif;
+}
+
+
+
+
+
+
+/*Branding: Add styling for the top banner. Modify content or style as needed.*/
+
+
+
+
+.branding {
+  background-color: var(--col-accent2);
+  color: var(--col-accent2-fg);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+}
+
+
+/*Side Panel*/
+
+.others {
+  background-color: var(--col-accent1);
+  color: var(--col-accent1-fg);
+  position: fixed;
+  top: 0;
+  left: -100%;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  padding: 0 1em;
+  padding-top: 2.1875em;
+}
+  .others .panel {
+    overflow-y: scroll;
+    opacity: 0;
+    transition: opacity var(--animations);
+  }
+.others.open {
+  left: 0;
+}
+  .others.open .panel {
+    opacity: 1;
+  }
+
+
+/* Button */
+
+.toggle-others {
+  background-color: var(--col-accent3);
+  color: var(--col-accent3-fg);
+  position: fixed;
+  top: 0.5em;
+  left: 1em;
+  line-height: 1.25;
+  z-index: 4;
+  padding: 0;
+  border: none;
+  padding: 0 0.5em;
+}
+
+/*Conversation Window: Adjust the conversation so it doesn't get content stuck under the fixed header. */
+
+
+
+
+.conversation {
+  padding: 0 1em;
+  margin-top: 2.1875em;
+}
+
+
+/* Medium Screen Styling Review the following styles for the first media query. **Note the drastic change to the functionality of the `.others` sidebar when the `open` class is added or removed. _Try it!_** */ 
+
+
+
+@media screen and (min-width: 40em) {
+  .others {
+    display: block;
+    left: 0;
+    z-index: 1;
+    width: 20em;
+    opacity: 1;
+    transform: translateX(-20em);
+    transition: transform var(--animations);
+  }
+  .others.open {
+    transform: translateX(0em);
+  }
+  .conversation {
+    transition: margin-left var(--animations);
+  }
+  .others.open ~ .conversation {
+    margin-left: 20em;
+  }
+  .toggle-others {
+    position: absolute;
+    top: 3em;
+    left: auto;
+    right: -1.5em;
+    width: 1.5em;
+    height: 5em;
+    padding: 0.25em;
+    text-align: center;
+  }
+  .toggle-others span {
+    writing-mode: vertical-rl;
+  } 
+}
+
+
+/* G. Larger screen styling: Add one more media query for larger screens */ 
+
+
+
+
+@media screen and (min-width: 60em) {
+  .others {
+    width: 30em;
+    transform: translateX(-30em);
+  }
+  .others.open ~ .conversation {
+    margin-left: 30em;
+  }
+}
+
